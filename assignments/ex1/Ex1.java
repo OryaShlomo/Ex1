@@ -1,4 +1,7 @@
 package assignments.ex1;
+
+import java.util.Scanner;
+
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
@@ -12,6 +15,16 @@ package assignments.ex1;
  * You should implement the following static functions:
  */
 public class Ex1 {
+    public static int chartoInt(char num) {
+        int ans = -1;
+        char[] arr1 = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] == num) {
+                ans = num;
+            }
+        }
+        return ans;
+    }
     /**
      * Convert the given number (num) to a decimal representation (as int).
      * It the given number is not in a valid format returns -1.
@@ -21,7 +34,6 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         // add your code here
-
         ////////////////////
         return ans;
     }
@@ -33,7 +45,42 @@ public class Ex1 {
     public static boolean isNumber(String a) {
         boolean ans = true;
         // add your code here
+        // char h = 0;
+        for(int i = 0; i < a.length(); i++) {
+            if (a.charAt(0) == 'b') {   // אם לא הכנסתי מספר לפני "b"
+                ans = false;
+                break;
+            }
+            if (a.charAt(i) == ' ') {    //בעיית הרווחים נפתרה
+                ans = false;
+                break;
+            }
+            if (a.charAt(a.length()-1) == 'b'){   //אם אין מספרים אחרי "b"
+                ans = false;
+                break;
+            }
+            if (a.charAt(i) == '-'){
+                ans = false;
+                break;
+            }
+            String abc = "acdefghijklmnopqrxtuvwxyz";
+            for (int j = 0; j < abc.length(); j++){
+                if (abc.charAt(j) == a.charAt(i)){
+                    ans = false;}
+                else {
+                    break;
+                }
+            }
+            if (a.charAt(i) == 'b'){
+                for (int j = 0; j < a.length(); j++){
+                    if (i != j && a.charAt(j) == 'b'){
+                        ans = false;
+                    }
+                }
+            }
 
+            //h = k.charAt(i);
+        }
         ////////////////////
         return ans;
     }
