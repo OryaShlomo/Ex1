@@ -17,8 +17,8 @@ import java.util.Scanner;
 public class Ex1 {
     public static int chartoInt(char num) {
         int ans = -1;
-        char[] arr1 = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
-        for (int i = 0; i < arr1.length; i++) {
+        char[] arr1 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'b'};
+        for (int i = 0; i < (arr1.length); i++) {
             if (arr1[i] == num) {
                 ans = num;
             }
@@ -46,41 +46,47 @@ public class Ex1 {
         boolean ans = true;
         // add your code here
         // char h = 0;
-        for(int i = 0; i < a.length(); i++) {
-            if (a.charAt(0) == 'b') {   // אם לא הכנסתי מספר לפני "b"
+        for(int i =0; i < a.length(); i++){
+            if (chartoInt(a.charAt(i)) == -1){     // הגדרתי לו את התווים החוקיים למספר. "b" לא כלול בהגדרה זו וצריך להגדיר אותו בנפרד.
                 ans = false;
                 break;
             }
-            if (a.charAt(i) == ' ') {    //בעיית הרווחים נפתרה
+            if (a.charAt(i) == ' ') {    // רווח הוא לא חוקי.
                 ans = false;
                 break;
             }
-            if (a.charAt(a.length()-1) == 'b'){   //אם אין מספרים אחרי "b"
+            if (a.charAt(i) == '-'){    // מספר שלילי לא חוקי.
                 ans = false;
                 break;
             }
-            if (a.charAt(i) == '-'){
-                ans = false;
-                break;
-            }
-            String abc = "acdefghijklmnopqrxtuvwxyz";
-            for (int j = 0; j < abc.length(); j++){
-                if (abc.charAt(j) == a.charAt(i)){
-                    ans = false;}
-                else {
-                    break;
-                }
-            }
-            if (a.charAt(i) == 'b'){
-                for (int j = 0; j < a.length(); j++){
-                    if (i != j && a.charAt(j) == 'b'){
-                        ans = false;
+            for(int j =0; j < a.length(); j++){
+                if (i != j){
+                    if(a.charAt(i) == 'b'){
+                        if(a.charAt(j) == 'b'){    // אם יש תו "b", המספר חוקי אם ורק אם "b" מופיע פעם אחת בלבד במחרוזת.
+                            ans = false;
+                        }else {ans = true;}
+                        break;
                     }
                 }
             }
-
-            //h = k.charAt(i);
         }
+        if(a.charAt(0) == 'b' || a.charAt(a.length() - 1) == 'b'){  // // אם לא הכנסתי מספר לפני או אחרי "b", המספר לא חוקי.
+            ans = false;
+            } else
+                if (a.length() - a.indexOf('b') > 2) {  // אם יש בסיס דו תווי המספר לא חוקי.
+                    ans = false;
+                    } else
+                        if (chartoInt(a.charAt(a.indexOf('b')+1)) < chartoInt('2')) {  // בודקת אם הבסיס הוא בטווח החוקי.
+                            ans = false;
+                        } else
+                            for (int e = a.indexOf('b')+1; e < a.length(); e++){
+                                for (int j = 0; j < a.indexOf('b'); j++){
+                                    if (chartoInt(a.charAt(j)) >= chartoInt(a.charAt(e))){     // בדיקה שהבסיס אכן גדול מהמספר שהוכנס.
+                                        ans = false;
+                                        break;
+                                    }
+                                }
+                            }
         ////////////////////
         return ans;
     }
