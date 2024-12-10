@@ -34,16 +34,18 @@ public class Ex1 {
         // add your code here
         if (isNumber(num)){
             int base =0;
+            String newString = "";
             if (num.contains("b")){
                 int b = num.indexOf('b');
                 int ba = b +1;
                 char base1 = num.charAt(ba);
                 int x = chartoInt(base1);
                 base = base + x;
+                newString = num.substring(0, (num.indexOf('b')));
             }else{
                 base =10;
+                newString = num;
             }
-            String newString = num.substring(0, (num.indexOf('b')-1));
             int counter1 = 0, counter2 = 0;
             for (int j = 0; j < newString.length(); j++){
                         counter1 = (int) ((chartoInt(newString.charAt(j))) * (Math.pow(base, (newString.length()-1-j))));
