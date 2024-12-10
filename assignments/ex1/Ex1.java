@@ -1,7 +1,5 @@
 package assignments.ex1;
-
 import java.util.Scanner;
-
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
@@ -20,7 +18,7 @@ public class Ex1 {
         char[] arr1 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'b'};
         for (int i = 0; i < (arr1.length); i++) {
             if (arr1[i] == num) {
-                ans = num;
+                ans = i;
             }
         }
         return ans;
@@ -35,9 +33,25 @@ public class Ex1 {
         int ans = -1;
         // add your code here
         if (isNumber(num)){
-            
+            int base =0;
+            if (num.contains("b")){
+                int b = num.indexOf('b');
+                int ba = b +1;
+                char base1 = num.charAt(ba);
+                int x = chartoInt(base1);
+                base = base + x;
+            }else{
+                base =10;
+            }
+            String newString = num.substring(0, (num.indexOf('b')-1));
+            int counter1 = 0, counter2 = 0;
+            for (int j = 0; j < newString.length(); j++){
+                        counter1 = (int) ((chartoInt(newString.charAt(j))) * (Math.pow(base, (newString.length()-1-j))));
+                        counter2 = counter2 + counter1;
+            }
+            ans  = counter2;
+                // להמיר את העשרוני ממחרוזת לאינטים ע"י "else"
         }
-
         ////////////////////
         return ans;
     }
@@ -52,14 +66,6 @@ public class Ex1 {
         // char h = 0;
         for(int i =0; i < a.length(); i++){
             if (chartoInt(a.charAt(i)) == -1){     // הגדרתי לו את התווים החוקיים למספר. "b" לא כלול בהגדרה זו וצריך להגדיר אותו בנפרד.
-                ans = false;
-                break;
-            }
-            if (a.charAt(i) == ' ') {    // רווח הוא לא חוקי.
-                ans = false;
-                break;
-            }
-            if (a.charAt(i) == '-'){    // מספר שלילי לא חוקי.
                 ans = false;
                 break;
             }

@@ -10,6 +10,8 @@ public class Ex1Main {
             System.out.println("Enter a string as number#2");
             // Scanner in = new Scanner(System.in);
             // String y = in.nextLine();
+            int a = Ex1.number2Int(n);
+            System.out.println("the decimal value is:  " + a);
 
         }
         else{
