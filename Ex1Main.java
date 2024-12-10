@@ -12,6 +12,7 @@ public class Ex1Main {
             // String y = in.nextLine();
             int a = Ex1.number2Int(n);
             System.out.println("the decimal value is:  " + a);
+            Ex1.int2Number(10,2);
 
         }
         else{

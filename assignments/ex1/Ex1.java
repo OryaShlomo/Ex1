@@ -34,25 +34,25 @@ public class Ex1 {
         // add your code here
         if (isNumber(num)){
             int base =0;
+            String newString = "";
             if (num.contains("b")){
                 int b = num.indexOf('b');
                 int ba = b +1;
                 char base1 = num.charAt(ba);
                 int x = chartoInt(base1);
                 base = base + x;
+                newString = num.substring(0, (num.indexOf('b')));
             }else{
                 base =10;
+                newString = num;
             }
-            String newString = num.substring(0, (num.indexOf('b')-1));
             int counter1 = 0, counter2 = 0;
             for (int j = 0; j < newString.length(); j++){
                         counter1 = (int) ((chartoInt(newString.charAt(j))) * (Math.pow(base, (newString.length()-1-j))));
                         counter2 = counter2 + counter1;
             }
             ans  = counter2;
-                // להמיר את העשרוני ממחרוזת לאינטים ע"י "else"
         }
-        ////////////////////
         return ans;
     }
     /**
@@ -111,7 +111,36 @@ public class Ex1 {
     public static String int2Number(int num, int base) {
         String ans = "";
         // add your code here
-
+        if (num <0){
+            ans = "number us nit valide";
+        }else{
+            if (base < 2 || base > 16){
+                ans = "Base is not valide";
+            }else{
+                int r_d = 0;
+                while (num != 0) {
+                    r_d = num % base;
+                    if (r_d > 0 && r_d < 9) {
+                        ans = ans + (char) (r_d);
+                    }else{
+                        if (r_d > 9 && r_d < 17){
+                            int[] arr1 = {10, 11, 12, 13, 14, 15, 16};
+                            char[] arr2 = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+                            for( int i =0 ; i < arr1.length; i++){
+                                for(int j =0; j < arr2.length; j++){
+                                    if (i == j) {
+                                        arr1[i] = arr2[j];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    num = num / base;
+                }
+            }
+        }
+        System.out.println("the value of the number in your base is:  " + ans);
+        // להפוך את המחרוזת של התשובה
         ////////////////////
         return ans;
     }
