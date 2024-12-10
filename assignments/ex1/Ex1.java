@@ -34,6 +34,10 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         // add your code here
+        if (isNumber(num)){
+            
+        }
+
         ////////////////////
         return ans;
     }
@@ -64,29 +68,28 @@ public class Ex1 {
                     if(a.charAt(i) == 'b'){
                         if(a.charAt(j) == 'b'){    // אם יש תו "b", המספר חוקי אם ורק אם "b" מופיע פעם אחת בלבד במחרוזת.
                             ans = false;
-                        }else {ans = true;}
-                        break;
-                    }
-                }
-            }
-        }
-        if(a.charAt(0) == 'b' || a.charAt(a.length() - 1) == 'b'){  // // אם לא הכנסתי מספר לפני או אחרי "b", המספר לא חוקי.
-            ans = false;
-            } else
-                if (a.length() - a.indexOf('b') > 2) {  // אם יש בסיס דו תווי המספר לא חוקי.
-                    ans = false;
-                    } else
+                        }
+                        if(a.charAt(0) == 'b' || a.charAt(a.length() - 1) == 'b'){  // // אם לא הכנסתי מספר לפני או אחרי "b", המספר לא חוקי.
+                            ans = false;
+                        } else
+                        if (a.length() - a.indexOf('b') > 2) {  // אם יש בסיס דו תווי המספר לא חוקי.
+                            ans = false;
+                        } else
                         if (chartoInt(a.charAt(a.indexOf('b')+1)) < chartoInt('2')) {  // בודקת אם הבסיס הוא בטווח החוקי.
                             ans = false;
                         } else
                             for (int e = a.indexOf('b')+1; e < a.length(); e++){
-                                for (int j = 0; j < a.indexOf('b'); j++){
-                                    if (chartoInt(a.charAt(j)) >= chartoInt(a.charAt(e))){     // בדיקה שהבסיס אכן גדול מהמספר שהוכנס.
+                                for (int c = 0; c < a.indexOf('b'); c++){
+                                    if (chartoInt(a.charAt(c)) >= chartoInt(a.charAt(e))){     // בדיקה שהבסיס אכן גדול מהמספר שהוכנס.
                                         ans = false;
                                         break;
                                     }
                                 }
                             }
+                    }
+                }
+            }
+        }
         ////////////////////
         return ans;
     }

@@ -1,5 +1,4 @@
 import assignments.ex1.Ex1;
-
 import java.util.Scanner;
 
 public class Ex1Main {
