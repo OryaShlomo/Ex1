@@ -6,6 +6,8 @@ public class Ex1Main {
         ///////
         //System.out.println(Ex1.isNumber(""));
         /////
+        int d = Ex1.number2Int("32bG");
+        System.out.println(d);
         Scanner k = new Scanner(System.in);
         String n = k.nextLine();
 
