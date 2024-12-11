@@ -1,11 +1,10 @@
 import assignments.ex1.Ex1;
-
 import java.util.Scanner;
 
 public class Ex1Main {
     public static void main(String[] args) {
         ///////
-        System.out.println(Ex1.isNumber(""));
+        //System.out.println(Ex1.isNumber(""));
         /////
         Scanner k = new Scanner(System.in);
         String n = k.nextLine();

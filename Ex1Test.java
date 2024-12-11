@@ -1,7 +1,6 @@
 
 import assignments.ex1.Ex1;
 import org.junit.jupiter.api.Test;
-
 import static assignments.ex1.Ex1.isNumber;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
