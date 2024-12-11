@@ -32,26 +32,26 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         // add your code here
-        if (isNumber(num)){
-            int base =0;
+        if (isNumber(num)) {
+            int base = 0;
             String newString = "";
-            if (num.contains("b")){
+            if (num.contains("b")) {
                 int b = num.indexOf('b');
-                int ba = b +1;
+                int ba = b + 1;
                 char base1 = num.charAt(ba);
                 int x = chartoInt(base1);
                 base = base + x;
                 newString = num.substring(0, (num.indexOf('b')));
-            }else{
-                base =10;
+            } else {
+                base = 10;
                 newString = num;
             }
             int counter1 = 0, counter2 = 0;
-            for (int j = 0; j < newString.length(); j++){
-                        counter1 = (int) ((chartoInt(newString.charAt(j))) * (Math.pow(base, (newString.length()-1-j))));
-                        counter2 = counter2 + counter1;
+            for (int j = 0; j < newString.length(); j++) {
+                counter1 = (int) ((chartoInt(newString.charAt(j))) * (Math.pow(base, (newString.length() - 1 - j))));
+                counter2 = counter2 + counter1;
             }
-            ans  = counter2;
+            ans = counter2;
         }
         return ans;
     }
@@ -62,89 +62,82 @@ public class Ex1 {
      */
     public static boolean isNumber(String a) {
         boolean ans = true;
-        // add your code here
-        // char h = 0;
-        for(int i =0; i < a.length(); i++){
-            if (chartoInt(a.charAt(i)) == -1){     // הגדרתי לו את התווים החוקיים למספר. "b" לא כלול בהגדרה זו וצריך להגדיר אותו בנפרד.
-                ans = false;
-                break;
-            }
-            for(int j =0; j < a.length(); j++){
-                if (i != j){
-                    if(a.charAt(i) == 'b'){
-                        if(a.charAt(j) == 'b'){    // אם יש תו "b", המספר חוקי אם ורק אם "b" מופיע פעם אחת בלבד במחרוזת.
-                            ans = false;
-                        }
-                        if(a.charAt(0) == 'b' || a.charAt(a.length() - 1) == 'b'){  // // אם לא הכנסתי מספר לפני או אחרי "b", המספר לא חוקי.
-                            ans = false;
-                        } else
-                        if (a.length() - a.indexOf('b') > 2) {  // אם יש בסיס דו תווי המספר לא חוקי.
-                            ans = false;
-                        } else
-                        if (chartoInt(a.charAt(a.indexOf('b')+1)) < chartoInt('2')) {  // בודקת אם הבסיס הוא בטווח החוקי.
-                            ans = false;
-                        } else
-                            for (int e = a.indexOf('b')+1; e < a.length(); e++){
-                                for (int c = 0; c < a.indexOf('b'); c++){
-                                    if (chartoInt(a.charAt(c)) >= chartoInt(a.charAt(e))){     // בדיקה שהבסיס אכן גדול מהמספר שהוכנס.
-                                        ans = false;
-                                        break;
+        if (a == null || a.length() == 0) {
+            ans = false;
+        } else {
+            for (int i = 0; i < a.length(); i++) {
+                if (chartoInt(a.charAt(i)) == -1) {     // הגדרתי לו את התווים החוקיים למספר. "b" לא כלול בהגדרה זו וצריך להגדיר אותו בנפרד.
+                    ans = false;
+                    break;
+                }
+
+                if (a.charAt(i) == 'b') {
+                    for (int j = 0; j < a.length(); j++) {
+                        if (i != j) {
+                            if (a.charAt(j) == 'b') {    // אם יש תו "b", המספר חוקי אם ורק אם "b" מופיע פעם אחת בלבד במחרוזת.
+                                ans = false;
+                            }
+                            if (a.charAt(0) == 'b' || a.charAt(a.length() - 1) == 'b') {  // // אם לא הכנסתי מספר לפני או אחרי "b", המספר לא חוקי.
+                                ans = false;
+                            } else if (a.length() - a.indexOf('b') > 2) {  // אם יש בסיס דו תווי המספר לא חוקי.
+                                ans = false;
+                            } else if (chartoInt(a.charAt(a.indexOf('b') + 1)) < chartoInt('2')) {  // בודקת אם הבסיס הוא בטווח החוקי.
+                                ans = false;
+                            } else
+                                for (int e = a.indexOf('b') + 1; e < a.length(); e++) {
+                                    for (int c = 0; c < a.indexOf('b'); c++) {
+                                        if (chartoInt(a.charAt(c)) >= chartoInt(a.charAt(e))) {     // בדיקה שהבסיס אכן גדול מהמספר שהוכנס.
+                                            ans = false;
+                                            break;
+                                        }
                                     }
                                 }
-                            }
+                        }
+                    }
+                } else {
+                    if (chartoInt(a.charAt(i)) > 9) {
+                        ans = false;
                     }
                 }
             }
         }
-        ////////////////////
         return ans;
     }
-
     /**
      * Calculate the number representation (in basis base)
      * of the given natural number (represented as an integer).
      * If num<0 or base is not in [2,16] the function should return "" (the empty String).
-     * @param num the natural number (include 0).
+     * @param num  the natural number (include 0).
      * @param base the basis [2,16]
      * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
      */
     public static String int2Number(int num, int base) {
         String ans = "";
-        // add your code here
-        if (num <0){
+        if (num < 0) {
             ans = "number us nit valide";
-        }else{
-            if (base < 2 || base > 16){
+        } else {
+            if (base < 2 || base > 16) {
                 ans = "Base is not valide";
-            }else{
-                int r_d = 0;
-                while (num != 0) {
-                    r_d = num % base;
-                    if (r_d > 0 && r_d < 9) {
-                        ans = ans + (char) (r_d);
-                    }else{
-                        if (r_d > 9 && r_d < 17){
-                            int[] arr1 = {10, 11, 12, 13, 14, 15, 16};
-                            char[] arr2 = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
-                            for( int i =0 ; i < arr1.length; i++){
-                                for(int j =0; j < arr2.length; j++){
-                                    if (i == j) {
-                                        arr1[i] = arr2[j];
-                                    }
-                                }
-                            }
+            } else {
+                int[] arr1 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+                char[] arr2 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+                String str_num = Integer.toString(num, base);
+                if (base == 10) {
+                    ans = str_num;
+                } else {
+                    char ch_base;
+                    for (int i = 0; i < arr1.length; i++) {
+                        if (arr1[i] == base) {
+                            ch_base = arr2[i];
+                            ans = str_num + 'b' + ch_base;
                         }
                     }
-                    num = num / base;
                 }
+
             }
         }
-        System.out.println("the value of the number in your base is:  " + ans);
-        // להפוך את המחרוזת של התשובה
-        ////////////////////
         return ans;
     }
-
     /**
      * Checks if the two numbers have the same value.
      * @param n1 first number
@@ -154,24 +147,37 @@ public class Ex1 {
     public static boolean equals(String n1, String n2) {
         boolean ans = true;
         // add your code here
-
-        ////////////////////
+        if (isNumber(n1) && isNumber(n2)) {
+            int x1 = number2Int(n1);
+            int x2 = number2Int(n2);
+            if (x1 != x2) {
+                ans = false;
+            }
+        } else {
+            ans = false;
+        }
         return ans;
     }
-
     /**
      * This static function search for the array index with the largest number (in value).
      * In case there are more than one maximum - returns the first index.
      * Note: you can assume that the array is not null and is not empty, yet it may contain null or none-valid numbers (with value -1).
      * @param arr an array of numbers
      * @return the index in the array in with the largest number (in value).
-     *
      */
     public static int maxIndex(String[] arr) {
         int ans = 0;
         // add your code here
-
-        ////////////////////
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length; j++) {
+                if (isNumber(arr[i]) && isNumber(arr[j])) {
+                    if (number2Int(arr[i]) < number2Int(arr[j])) ;
+                    ans = j;
+                } else {
+                    ans = i;
+                }
+            }
+        }
         return ans;
     }
 }
