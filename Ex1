@@ -51,29 +51,6 @@ public class Ex1 {
         return ans;
     }
 
-    public static int whatTheBase(String num) {
-        int base = 0;
-        if (isNumber(num)) {
-            if (num.contains("b")) {
-                base = chartoInt(num.charAt(num.indexOf('b') + 1));
-            } else {
-                base = 10;
-            }
-        }
-
-        return base;
-    }
-
-    public static void enterNum1() {
-        System.out.println("Ex1 class solution:");
-        System.out.println("Enter a string as number#1 (or 'quit' to end the program) : ");
-        Scanner k = new Scanner(System.in);
-        String n = k.nextLine();
-        if (n == "quit") {
-            System.out.println("quiting now...");
-        }
-    }
-
     /**
      * Convert the given number (num) to a decimal representation (as int).
      * It the given number is not in a valid format returns -1.
