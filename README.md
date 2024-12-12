@@ -9,4 +9,5 @@ The "int2Number" function gets int param as a decimal number and also int param 
 The "add" fuction gets two number as a stirng and return the sum of both of them in decimal value (int).
 The "mult" fuction gets two number as a stirng and return the product of both of them in decimal value and int.
 The "maxIndex" function build an array with: two numbwer are in the format, the sum of them and the product of them, and return the index of the number with the biggest value.
+The "equals" fuction gets two numbers as two string and says if botj of them have the same value.
 
