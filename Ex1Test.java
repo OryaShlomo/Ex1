@@ -2,6 +2,7 @@
 import assignments.ex1.Ex1;
 import org.junit.jupiter.api.Test;
 
+import static assignments.ex1.Ex1.baseTrue;
 import static assignments.ex1.Ex1.isNumber;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,6 +12,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Make sure you complete all the needed JUnits
  */
 public class Ex1Test {
+
+    @Test
+    void charToIntTest(){
+        assertEquals(10, Ex1.chartoInt('A'));
+    }
+
+    @Test
+    void number2intTest(){
+        String a = "9bA";
+        int d = Ex1.number2Int(a);
+        assertEquals(9, d);
+    }
+
+    @Test
+    void baseTrueTest(){
+        //String a = "A";
+        boolean a = baseTrue("A");
+        assertFalse(a);
+    }
+
     @Test
     void computeNumberTest() {
         String s2 = "1011b2";
@@ -62,12 +83,19 @@ public class Ex1Test {
         String[] arr1 = {"32bG", "0", "357b8", "1000"};
         int k1 = Ex1.maxIndex(arr1);
         assertEquals(k1, 3);
+        String[] arr2 = {"123", "124", "246", "15129"};
+        int k2 = Ex1.maxIndex(arr2);
+        assertEquals(k2, 3);
     }
 
     @Test
     void TestIsNumber() {
+        boolean m = isNumber("A");
+        assertFalse(m);
         boolean t = isNumber("123");
         assertTrue(t);
+        boolean z = isNumber("AFbG");
+        assertTrue(z);
         boolean b = isNumber("b");
         assertFalse(b);
         boolean k = isNumber("");
