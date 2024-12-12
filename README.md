@@ -8,4 +8,5 @@ The "number2Int" function gets string as a number and return its decimal value a
 The "int2Number" function gets int param as a decimal number and also int param as a number of base (betwenn 2 and 16) and return a string as a number with the same value just in the base that it got.
 The "add" fuction gets two number as a stirng and return the sum of both of them in decimal value (int).
 The "mult" fuction gets two number as a stirng and return the product of both of them in decimal value and int.
-The "maxIndex" function build a array
+The "maxIndex" function build an array with: two numbwer are in the format, the sum of them and the product of them, and return the index of the number with the biggest value.
+
